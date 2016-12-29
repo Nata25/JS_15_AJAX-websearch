@@ -48,6 +48,14 @@ $(function() {
 
     // function createEntity(img, title, url, pub, author, brief, lang, num, total, country, type, score) {
     function createEntity(img, title, url) {
+
+
+
+        var html = $("#NY-carousel-template").html();
+        var renderedCarousel = tmpl(html, NYcarouselContent);
+        nyCarousel.append(renderedCarousel)
+
+
         var container = $("<div class='entity'></div>");
         container.append($("<div class='preview_img'></div>").append($("<img src='" + img + "'>")));
         var text_container = $("<div class='text_container'></div>");

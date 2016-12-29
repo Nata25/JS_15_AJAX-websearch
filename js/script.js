@@ -1,11 +1,8 @@
-function callbackFunc() {
-    console.log(arguments);
-}
-
-
 $(function() {
     $.ajax({
-        url: "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&key=ABQIAAAACKQaiZJrS0bhr9YARgDqUxQBCBLUIYB7IF2WaNrkYqF0tBovNBQFDtM_KNtb3xQxWff2mI5hipc3lg&q=PHP&callback=callbackFunc&context=?",
-        dataType: 'jsonp'
+        url: "https://webhose.io/search?token=e2e94dc5-1ce2-49d4-a8d9-4932418149cb&format=json&q=sherlock",
+        success: function(data) {
+            console.log(data);
+        }
     });
 });

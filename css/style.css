@@ -1,9 +1,11 @@
 * {
-    font-family: 'Open Sans', Helvetica, sans-serif;
+    /*margin: 0;
+    padding: 0;*/
 }
 
 html {
     background-color: #e8e8e8;
+    font-family: 'Open Sans', Helvetica, sans-serif;
 }
 
 h1,
@@ -101,4 +103,13 @@ a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 15px;
+}
+
+.box {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 9px;
+    border-radius: 3px;
+    border: 1px solid #cacaca;
+    font-size: 12px;
 }

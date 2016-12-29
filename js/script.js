@@ -33,16 +33,33 @@ $(function() {
                 results.append(heading_message);
 
                 for (var i = 0; i < len; i++) {
+
                     var item = data.posts[i];
+
+                    // main image: use placeholder if no img found
                     var img = (item.thread.main_image) ? item.thread.main_image : "https://webhose.io/public/images/noimage.png";
+
+                    // capitalize first letter of Language
+                    var lang = item.language;
+                    lang = lang[0].toUpperCase() + lang.slice(1);
+
+                    // get proper string for date
                     var published = parseDate(item.thread.published);
+
+                    // generate entity
                     var entity = createEntity(img,
                         item.thread.title,
                         item.thread.url,
                         published,
                         item.author,
                         item.thread.site,
-                        item.text);
+                        item.text,
+                        lang,
+                        item.ord_in_thread + 1,
+                        item.thread.country,
+                        item.thread.site_type,
+                        item.thread.performance_score
+                    );
 
                     results.append(entity);
                 }
@@ -51,11 +68,18 @@ $(function() {
         });
     });
 
-    // function createEntity(img, title, url, pub, author, brief, lang, num, total, country, type, score) {
-    function createEntity(img, title, url, pub, author, site, text) {
+    function createEntity(src, title, url, pub, author, site, text, lang, num, country_short, type, score) {
 
         var container = $("<div class='entity'></div>");
-        container.append($("<div class='preview_img'></div>").append($("<img src='" + img + "'>")));
+
+        var img = $("<img src='" + src + "'>");
+
+        // use placeholder if img load fails
+        img.on("error", function() {
+            $(this).attr("src", "https://webhose.io/public/images/noimage.png");
+        });
+        container.append($("<div class='preview_img'></div>").append(img));
+
         var text_container = $("<div class='text_container'></div>");
         container.append(text_container);
         text_container.append($("<a href='" + url + "'>" + title + "</a>"));
@@ -64,10 +88,22 @@ $(function() {
                     + " <span class='strong'>By:</span> " + author
                     + " <span class='strong'>@</span> " + site
                     + "</p>");
-        text_container.append(about);
         var brief = $("<p class='text'></p>");
         brief.text(text);
-        text_container.append(brief);
+        var lang = $("<span class='box'>Language: " + lang + "</span>");
+        var num = $("<span class='box'>Post number: " + num + "</span>");
+        var country = $("<span class='box'>Country: " + country_short + "</span>");
+        var type = $("<span class='box'>Site Type: " + type + "</span>");
+        var performance_score = $("<span class='box'>Performance Score: " + score + "</span>");
+
+        text_container.append(about)
+                      .append(brief)
+                      .append(lang)
+                      .append(num)
+                      .append(country)
+                      .append(type)
+                      .append(performance_score);
+
         return container;
     }
 

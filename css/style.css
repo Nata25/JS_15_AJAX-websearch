@@ -91,3 +91,14 @@ a:hover {
     width: 60%;
     vertical-align: top;
 }
+
+.about {
+    font-size: 12px;
+}
+
+.text {
+    height: 84px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+}

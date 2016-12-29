@@ -11,15 +11,14 @@ $(function() {
     searchbox.keydown(function(e) {
         if (e.which == 13) {
             query = $(this).val();
-            // $(this).change();
+            $(this).change();
             submit.focus();
-            form.submit();
             body.append($("<p>Searching for " + query + "...</p>"));
             body.append($("<p>Complete!</p>"));
         }
     });
 
-    $("form").submit(function(e) {
+    form.on("submit", function(e) {
         e.preventDefault();
         $.ajax({
             url: "https://webhose.io/search?token=e2e94dc5-1ce2-49d4-a8d9-4932418149cb&format=json&q=" + query,

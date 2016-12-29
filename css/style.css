@@ -1,3 +1,59 @@
 * {
     font-family: 'Open Sans', Helvetica, sans-serif;
 }
+
+html {
+    background-color: #e8e8e8;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.results {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.entity {
+    margin-top: 30px;
+}
+
+a {
+    color: #038bd9;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+a:hover {
+    color: #337ab7;
+    text-decoration: underline;
+}
+
+.preview_img {
+    display: inline-block;
+    margin: 0 15px;
+    width: 25%;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.preview_img img {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+    margin: 0 auto;
+}
+
+.text_container {
+    display: inline-block;
+    margin: 0 0 0 20px;
+    width: 60%;
+    vertical-align: top;
+}

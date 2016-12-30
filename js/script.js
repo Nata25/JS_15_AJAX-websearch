@@ -10,7 +10,7 @@ $(function() {
     searchbox.focus();
 
     searchbox.keydown(function(e) {
-        if (e.which == 13) {
+        if ( (e.which == 13) && $(this).val() ) {
             query = $(this).val();
             $(this).change();
             submit.focus();
@@ -24,49 +24,52 @@ $(function() {
             url: "https://webhose.io/search?token=e2e94dc5-1ce2-49d4-a8d9-4932418149cb&format=json&q=" + query,
             success: function(data) {
                 results.html("");
-                var len = (data.totalResults > 20) ? 20 : data.total;
-                var heading_message = $("<p></p>");
-                var intro = "<p>Found <span class='strong'>" + data.totalResults + "</span> posts matching your filters from the past <span class='strong'>3 days</span>.</p>";
-                intro += "<p><span class='strong'>" + len + "</span> results of total are shown.</p>";
-                intro += "<p>The posts are ordered for consumption by crawl date, from oldest to newest.</p>";
-                heading_message.html(intro);
-                results.append(heading_message);
-
-                for (var i = 0; i < len; i++) {
-
-                    var item = data.posts[i];
-
-                    // main image: use placeholder if no img found
-                    var img = (item.thread.main_image) ? item.thread.main_image : "https://webhose.io/public/images/noimage.png";
-
-                    // capitalize first letter of Language
-                    var lang = item.language;
-                    lang = lang[0].toUpperCase() + lang.slice(1);
-
-                    // get proper string for date
-                    var published = parseDate(item.thread.published);
-
-                    // generate entity
-                    var entity = createEntity(img,
-                        item.thread.title,
-                        item.thread.url,
-                        published,
-                        item.author,
-                        item.thread.site,
-                        item.text,
-                        lang,
-                        item.ord_in_thread + 1,
-                        item.thread.country,
-                        item.thread.site_type,
-                        item.thread.performance_score
-                    );
-
-                    results.append(entity);
+                var len = (data.totalResults > 20) ? 20 : data.totalResults;
+                if (len == 0) {
+                    results.append($("<p>Sorry, no results were found to match your query.</p>"));
                 }
+                else {
+                    var intro = "<p>Found <span class='strong'>" + data.totalResults + "</span> posts matching your filters from the past <span class='strong'>3 days</span>.</p>";
+                    intro += "<p><span class='strong'>" + len + "</span> results of total are shown.</p>";
+                    intro += "<p>The posts are ordered for consumption by crawl date, from oldest to newest.</p>";
+                    results.append(intro);
 
-                // print data Object in console
-                console.log(data);
-            }
+                    for (var i = 0; i < len; i++) {
+
+                        var item = data.posts[i];
+
+                        // main image: use placeholder if no img found
+                        var img = (item.thread.main_image) ? item.thread.main_image : "https://webhose.io/public/images/noimage.png";
+
+                        // capitalize first letter of language
+                        var lang = item.language;
+                        lang = lang[0].toUpperCase() + lang.slice(1);
+
+                        // get proper string for date
+                        var published = parseDate(item.thread.published);
+
+                        // generate entity
+                        var entity = createEntity(img,
+                            item.thread.title,
+                            item.thread.url,
+                            published,
+                            item.author,
+                            item.thread.site,
+                            item.text,
+                            lang,
+                            item.ord_in_thread + 1,
+                            item.thread.country,
+                            item.thread.site_type,
+                            item.thread.performance_score
+                        );
+
+                        results.append(entity);
+                    }
+
+                    // print data Object in console
+                    console.log(data);
+                }
+            } // end of success callback
         });
     });
 
@@ -79,6 +82,7 @@ $(function() {
         // use placeholder if img load fails
         img.on("error", function() {
             $(this).attr("src", "https://webhose.io/public/images/noimage.png");
+            console.log("image not found");
         });
         container.append($("<div class='preview_img'></div>").append(img));
 

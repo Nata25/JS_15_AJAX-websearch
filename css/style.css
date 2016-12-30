@@ -116,6 +116,7 @@ a:hover {
 
 .text {
     height: 84px;
+    margin-bottom: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 15px;

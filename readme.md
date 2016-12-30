@@ -2,8 +2,7 @@
 
 The results are based upon [Webhose.io](https://webhose.io/) API.
 
-The output is very similar to the one [Live Web Data search](https://webhose.io/api) provides. 'Total Posts' rubric is not implemented as it requires additional request to the server
-on each iteration.
+The output is very similar to the one [Live Web Data search](https://webhose.io/api) provides. 'Total Posts' rubric is not implemented yet as it requires additional request to the server on each iteration and I wasn't able to cope with it.
 
 Images are taken from live search; in no image is provided or if there's an error on image load, custom webhose.io placeholder is used instead. (Load errors additionally raise GET error message in console, which is non-manageable.)
 

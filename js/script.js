@@ -14,7 +14,7 @@ $(function() {
             query = $(this).val();
             $(this).change();
             submit.focus();
-            results.html("Searching for " + query + "...");
+            results.html('Searching for "' + query + '"...');
         }
     });
 
@@ -26,7 +26,7 @@ $(function() {
                 results.html("");
                 var len = (data.totalResults > 20) ? 20 : data.total;
                 var heading_message = $("<p></p>");
-                var intro = "<p>Found <span class='strong'>" + data.totalResults + "</span> posts matching your filters from the past <span class='strong'>3 days</span></p>";
+                var intro = "<p>Found <span class='strong'>" + data.totalResults + "</span> posts matching your filters from the past <span class='strong'>3 days</span>.</p>";
                 intro += "<p><span class='strong'>" + len + "</span> results of total are shown.</p>";
                 intro += "<p>The posts are ordered for consumption by crawl date, from oldest to newest.</p>";
                 heading_message.html(intro);
@@ -63,6 +63,8 @@ $(function() {
 
                     results.append(entity);
                 }
+
+                // print data Object in console
                 console.log(data);
             }
         });
@@ -82,7 +84,7 @@ $(function() {
 
         var text_container = $("<div class='text_container'></div>");
         container.append(text_container);
-        text_container.append($("<a href='" + url + "'>" + title + "</a>"));
+        text_container.append($("<a href='" + url + " target='_blank'>" + title + "</a>"));
         var about = $("<p class='about'><span class='strong'>Published at</span>: "
                     + pub
                     + " <span class='strong'>By:</span> " + author

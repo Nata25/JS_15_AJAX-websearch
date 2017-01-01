@@ -45,16 +45,16 @@ p {
 .myForm input[type=submit] {
     display: inline-block;
     padding: 5px 10px;
-    background-color: #2196f3;
-    color: #fff;
     border: 0;
     border-radius: 4px;
+    background-color: #2196f3;
+    color: #fff;
 }
 
 .template_img {
     display: block;
-    margin: 40px auto;
     width: 100%;
+    margin: 40px auto;
 }
 
 .strong {
@@ -65,9 +65,9 @@ p {
     width: 70%;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
+    background-color: #fff;
 }
 
 .entity {
@@ -76,8 +76,8 @@ p {
 
 a {
     color: #038bd9;
-    text-decoration: none;
     font-size: 16px;
+    text-decoration: none;
 }
 
 a:hover {
@@ -87,8 +87,8 @@ a:hover {
 
 .preview_img {
     display: inline-block;
-    margin: 0 15px;
     width: 25%;
+    margin: 0 15px;
     padding: 4px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -104,8 +104,8 @@ a:hover {
 
 .text_container {
     display: inline-block;
-    margin: 0 0 0 20px;
     width: 60%;
+    margin: 0 0 0 20px;
     vertical-align: top;
 }
 
@@ -117,16 +117,16 @@ a:hover {
 .text {
     height: 84px;
     margin-bottom: 12px;
-    overflow: hidden;
-    text-overflow: ellipsis;
     font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .box {
     display: inline-block;
     margin: 5px;
     padding: 5px 9px;
-    border-radius: 3px;
     border: 1px solid #cacaca;
+    border-radius: 3px;
     font-size: 12px;
 }

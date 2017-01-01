@@ -48,14 +48,6 @@ $(function() {
                         // get proper string for date
                         var published = parseDate(item.thread.published);
 
-                        // get all posts in a thread to calc total
-                        // $.ajax({
-                        //     url: "https://webhose.io/search?token=e2e94dc5-1ce2-49d4-a8d9-4932418149cb&format=json&" + item.thread.url,
-                        //     success: function(data) {
-                        //         console.log("data from thread:");
-                        //         console.log(data);
-                        //     }
-                        // });
                         // generate entity
                         var entity = createEntity(img,
                             item.thread.title,
@@ -75,7 +67,7 @@ $(function() {
                     }
 
                     // print data Object in console
-                    console.log(data);
+                    // console.log(data);
                 }
             } // end of success callback
         });

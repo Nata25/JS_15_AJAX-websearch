@@ -10,4 +10,6 @@ The speed is a bit slow. 100 results are provided at once, 20 first are listed. 
 
 External library used: jQuery.
 
+[Open on .github.io](https://nata25.github.io/JS_15_AJAX-websearch/).
+
 Please do not perform too much queries as an API key for free plan is used.
